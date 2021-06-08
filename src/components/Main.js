@@ -56,8 +56,8 @@ const Main = ({ menuData }) => {
   return (
     <Section>
       <Container>
-        {menuData.map((item) => (
-          <Wrapper>
+        {menuData.map((item, index) => (
+          <Wrapper key={index}>
             <p>{item.name}</p>
             <Columns>
               <ColumnLeft>

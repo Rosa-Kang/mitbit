@@ -34,11 +34,11 @@ const NavMenu = styled.div`
   background-color: #fff;
 `;
 
-const NavMenuLinks = styled(Link)`
+const NavMenuList = styled.li`
   border: 1px solid #dd3333;
   color: #dd3333;
   font-family: "Roboto", sans-serif;
-  text-decoration: none;
+  list-style-type: none;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   padding: 20px;
@@ -46,6 +46,8 @@ const NavMenuLinks = styled(Link)`
 
   &:hover {
     transform: translateY(-2px);
+    background-color: #dd3333;
+    color: #fff;
   }
 
   &:focus {
@@ -63,16 +65,18 @@ const Header = ({ menuData }) => {
     );
   });
 
+  const optionSelected = () => {};
+
   return (
     <Greater>
       <Head>
         <Logo to="/">MitBit</Logo>
       </Head>
       <NavMenu>
-        {uniqueMenu.map((item, index) => (
-          <NavMenuLinks to={item.link} key={index}>
+        {uniqueMenu.map((item) => (
+          <NavMenuList onClick={optionSelected} key={item.category}>
             {item.category}
-          </NavMenuLinks>
+          </NavMenuList>
         ))}
       </NavMenu>
     </Greater>
