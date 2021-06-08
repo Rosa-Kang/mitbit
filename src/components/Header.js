@@ -28,18 +28,19 @@ const Logo = styled(Link)`
   text-align: center;
 `;
 
-const NavMenu = styled.ul`
+const NavMenu = styled.div`
   display: flex;
   justify-content: center;
   background-color: #fff;
+  margin-top: 0px;
 `;
 
-const NavMenuList = styled.li`
+const NavMenuLinks = styled(Link)`
   cursor: pointer;
   border: 1px solid #dd3333;
   color: #dd3333;
   font-family: "Roboto", sans-serif;
-  list-style-type: none;
+  text-decoration: none;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   padding: 20px;
@@ -66,8 +67,6 @@ const Header = ({ menuData }) => {
     );
   });
 
-  const optionSelected = () => {};
-
   return (
     <Greater>
       <Head>
@@ -75,9 +74,9 @@ const Header = ({ menuData }) => {
       </Head>
       <NavMenu>
         {uniqueMenu.map((item) => (
-          <NavMenuList onClick={optionSelected} key={item.category}>
+          <NavMenuLinks to={item.link} key={item.category}>
             {item.category}
-          </NavMenuList>
+          </NavMenuLinks>
         ))}
       </NavMenu>
     </Greater>

@@ -142,5 +142,85 @@
     "image": "../images/happyhour1.png",
     "price" : "$ 11.99",
     "count": ""
+  },
+  {
+    "category": "Main",
+    "link": "",
+    "name": "Grilled Double Mit Burger",
+    "image": "../images/burger6.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+  {
+    "category": "Main",
+    "link": "",
+    "name": "Double Mit Burger",
+    "image": "../images/burger3.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+  {
+    "category": "Appetizer",
+    "link": "",
+    "name": "Western Burger",
+    "image": "../images/western.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+  {
+    "category": "Dessert",
+    "link": "",
+    "name": "Dessert",
+    "image": "../images/dessert1.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+  {
+    "category": "kids",
+    "link": "",
+    "name": "For Kids",
+    "image": "../images/kids.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+  {
+    "category": "Side/Drink",
+    "link": "",
+    "name": "Grilled Double Mit Burger",
+    "image": "../images/drink0.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+  {
+    "category": "Combo",
+    "link": "",
+    "name": "Time Burger Combo",
+    "image": "../images/combo1.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+  {
+    "category": "Food",
+    "link": "",
+    "name": "Grilled Double Mit Burger",
+    "image": "../images/burger2.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+  {
+    "category": "Side/Drink",
+    "link": "",
+    "name": "Grilled Double Mit Burger",
+    "image": "../images/drink1.png",
+    "price" : "$ 11.99",
+    "count": ""
+  },
+   {
+    "category": "Food",
+    "link": "",
+    "name": "Grilled Mit Burger",
+    "image": "../images/burger1.png",
+    "price" : "$ 8.99",
+    "count": ""
   }
 ]
