@@ -28,13 +28,14 @@ const Logo = styled(Link)`
   text-align: center;
 `;
 
-const NavMenu = styled.div`
+const NavMenu = styled.ul`
   display: flex;
   justify-content: center;
   background-color: #fff;
 `;
 
 const NavMenuList = styled.li`
+  cursor: pointer;
   border: 1px solid #dd3333;
   color: #dd3333;
   font-family: "Roboto", sans-serif;
