@@ -1,7 +1,7 @@
 [
   {
     "category": "Food",
-    "link": "",
+    "link": "food",
     "name": "Grilled Chicken Burger",
     "image": "../images/burger0.png",
     "price" : "$ 8.99",

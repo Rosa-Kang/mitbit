@@ -1,8 +1,12 @@
 import React from "react";
-import Main from "../components/Main";
+import Header from "../components/Header";
 
 const Home = ({ menuData }) => {
-  return <Main menuData={menuData} />;
+  return (
+    <>
+      <Header menuData={menuData} />
+    </>
+  );
 };
 
 export default Home;

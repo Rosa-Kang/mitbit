@@ -52,28 +52,54 @@ const Plus = styled(HiPlusCircle)`
   }
 `;
 
-const Main = ({ menuData }) => {
-  return (
-    <Section>
-      <Container>
-        {menuData.map((item, index) => (
-          <Wrapper key={index}>
-            <p>{item.name}</p>
-            <Columns>
-              <ColumnLeft>
-                <img src={item.image} alt={item.name} />
-              </ColumnLeft>
-              <ColumnRight>
-                <p>{item.price}</p>
-                <Plus to="/houses" primary="true" />
-                <p>Add</p>
-              </ColumnRight>
-            </Columns>
-          </Wrapper>
-        ))}
-      </Container>
-    </Section>
-  );
+const Main = ({ menuData, id, filtered }) => {
+  console.log(menuData, id, filtered);
+
+  if (id === null) {
+    return (
+      <Section>
+        <Container>
+          {menuData.map((item, index) => (
+            <Wrapper key={index}>
+              <p>{item.name}</p>
+              <Columns>
+                <ColumnLeft>
+                  <img src={item.image} alt={item.name} />
+                </ColumnLeft>
+                <ColumnRight>
+                  <p>{item.price}</p>
+                  <Plus to="/houses" primary="true" />
+                  <p>Add</p>
+                </ColumnRight>
+              </Columns>
+            </Wrapper>
+          ))}
+        </Container>
+      </Section>
+    );
+  } else {
+    return (
+      <Section>
+        <Container>
+          {filtered.map((item, index) => (
+            <Wrapper key={index}>
+              <p>{item.name}</p>
+              <Columns>
+                <ColumnLeft>
+                  <img src={item.image} alt={item.name} />
+                </ColumnLeft>
+                <ColumnRight>
+                  <p>{item.price}</p>
+                  <Plus to="/houses" primary="true" />
+                  <p>Add</p>
+                </ColumnRight>
+              </Columns>
+            </Wrapper>
+          ))}
+        </Container>
+      </Section>
+    );
+  }
 };
 
 export default Main;
