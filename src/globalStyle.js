@@ -8,9 +8,6 @@ const globalStyle = createGlobalStyle`
         font-family: "Roboto", sans-serif;
     }
     
-    html, body {
-        overflow-x: hidden;
-    }
 `;
 
 export default globalStyle;

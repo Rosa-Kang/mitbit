@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 const Greater = styled.div`
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `;
 
 const Head = styled.header`
@@ -20,7 +23,7 @@ const Head = styled.header`
 const Logo = styled(Link)`
   color: #fff;
   cursor: pointer;
-  font-family: "Grand Hotel", cursive !important;
+  font-family: "Grand Hotel", cursive;
   text-decoration: none;
   text-align: center;
 `;
@@ -39,6 +42,16 @@ const NavMenuLinks = styled(Link)`
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   padding: 20px;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus {
+    background-color: #dd3333;
+    color: #fff;
+  }
 `;
 
 const Header = ({ menuData }) => {
