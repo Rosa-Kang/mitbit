@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import Main from "../components/Main";
+import Products from "../Products/Products";
 
 const Greater = styled.div`
   display: flex;
@@ -59,7 +59,7 @@ const NavMenuLinks = styled.li`
   }
 `;
 
-const Header = ({ menuData }) => {
+const Navbar = ({ menuData }) => {
   const [id, setId] = useState(null);
 
   const uniqueMenu = menuData.filter((item, i) => {
@@ -81,7 +81,7 @@ const Header = ({ menuData }) => {
   };
 
   const filtered = menuData.filter((li) => li.category === id);
-  console.log(menuData, filtered);
+
   return (
     <>
       <Greater>
@@ -102,9 +102,9 @@ const Header = ({ menuData }) => {
           ))}
         </NavMenu>
       </Greater>
-      <Main menuData={menuData} id={id} filtered={filtered} />
+      <Products menuData={menuData} id={id} filtered={filtered} />
     </>
   );
 };
 
-export default Header;
+export default Navbar;

@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../components/Header";
+import Navbar from "../components/Nav/Navbar";
 
 const Home = ({ menuData }) => {
   return (
     <>
-      <Header menuData={menuData} />
+      <Navbar menuData={menuData} />
     </>
   );
 };
