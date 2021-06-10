@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { RiArrowUpSLine } from "react-icons/ri";
-import { RiArrowDownSLine } from "react-icons/ri";
+// import { RiArrowUpSLine } from "react-icons/ri";
+// import { RiArrowDownSLine } from "react-icons/ri";
 
 const CartContainer = styled.section`
   display: flex;
@@ -22,20 +22,9 @@ const CartItems = styled.div`
 `;
 
 const Cart = () => {
-  const [open, setOpen] = useState(true);
-
-  const handleOpen = () => {
-    setOpen(!open);
-  };
-
   return (
     <CartContainer>
       <CartItems>
-        {open ? (
-          <RiArrowDownSLine onClick={handleOpen} />
-        ) : (
-          <RiArrowUpSLine onClick={handleOpen} />
-        )}
         <h1>SHOPPING CART HERE!</h1>
       </CartItems>
     </CartContainer>

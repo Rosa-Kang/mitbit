@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { HiPlusCircle } from "react-icons/hi";
+// import { useDispatch, useSelector } from "react-redux";
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,6 +44,13 @@ const Plus = styled(HiPlusCircle)`
 `;
 
 const Product = ({ item }) => {
+  // const [alias, setAlias] = useState();
+  // const dispatch = useDispatch();
+  const clickHandler = (e) => {
+    const info = e.currentTarget.getAttribute("alias");
+    console.log(info);
+  };
+
   return (
     <>
       <Wrapper key={item.id}>
@@ -53,7 +61,7 @@ const Product = ({ item }) => {
           </ColumnLeft>
           <ColumnRight>
             <p>{item.price}</p>
-            <Plus primary="true" />
+            <Plus primary="true" alias={item.id} onClick={clickHandler} />
             <p>Add</p>
           </ColumnRight>
         </Columns>
