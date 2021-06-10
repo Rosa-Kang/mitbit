@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "../components/Nav/Navbar";
 
-const Home = ({ menuData }) => {
+const Home = () => {
   return (
     <>
-      <Navbar menuData={menuData} />
+      <Navbar />
     </>
   );
 };

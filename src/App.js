@@ -1,34 +1,18 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-// import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
-// import Header from "./components/Header";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GlobalStyle from "./globalStyle";
-// import Payment from "./pages/Payment";
-
-const URL = "http://localhost:3000/data/data.json";
+import Home from "./pages/Home";
+import Payment from "./pages/Payment";
 
 function App() {
-  const [menuData, setMenuData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(URL)
-      .then((res) => {
-        setMenuData(res.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
   return (
-    <>
+    <Router>
       <GlobalStyle />
-      <Home menuData={menuData} />
-      {/* <Switch>
-        <Route exact path="/" component={Home} menuData={menuData} />
-        <Route path="/payment" component={Payment} exact />
-      </Switch> */}
-    </>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/payment" component={Payment} />
+      </Switch>
+    </Router>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import Products from "../Products/Products";
@@ -6,6 +7,8 @@ import Products from "../Products/Products";
 const Greater = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -31,9 +34,22 @@ const Logo = styled(Link)`
 
 const NavMenu = styled.ul`
   display: flex;
+  width: 100%;
   justify-content: center;
   background-color: #fff;
   margin-top: 0px;
+
+  @media screen and (max-width: 860px) {
+    width: 80%;
+    overflow: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 const NavMenuLinks = styled.li`
@@ -57,14 +73,21 @@ const NavMenuLinks = styled.li`
     background-color: #dd3333;
     color: #fff;
   }
+
+  @media screen and (max-width: 860px) {
+    display: inline-block;
+  }
 `;
 
-const Navbar = ({ menuData }) => {
-  const [id, setId] = useState(null);
+const Navbar = () => {
+  const [name, setName] = useState(null);
 
-  const uniqueMenu = menuData.filter((item, i) => {
+  const products = useSelector((state) => state.products.products);
+  console.log(products);
+
+  const uniqueMenu = products.filter((item, i) => {
     return (
-      menuData.findIndex((item2, j) => {
+      products.findIndex((item2, j) => {
         return item.category === item2.category;
       }) === i
     );
@@ -73,14 +96,15 @@ const Navbar = ({ menuData }) => {
   const select = (e) => {
     e.preventDefault();
 
-    setId(e.target.id);
+    setName(e.target.getAttribute("name"));
+    console.log(name);
   };
 
   const reset = () => {
-    setId(null);
+    setName(null);
   };
 
-  const filtered = menuData.filter((li) => li.category === id);
+  const filtered = products.filter((li) => li.category === name);
 
   return (
     <>
@@ -95,14 +119,14 @@ const Navbar = ({ menuData }) => {
             <NavMenuLinks
               onClick={select}
               key={item.category}
-              id={item.category}
+              name={item.category}
             >
               {item.category}
             </NavMenuLinks>
           ))}
         </NavMenu>
       </Greater>
-      <Products menuData={menuData} id={id} filtered={filtered} />
+      <Products products={products} name={name} filtered={filtered} />
     </>
   );
 };

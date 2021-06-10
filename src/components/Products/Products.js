@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+// import {useSelector} from 'react-redux';
 import styled from "styled-components";
 import Product from "./Product/Product";
 
@@ -12,14 +13,14 @@ const Container = styled.section`
   justify-content: center;
 `;
 
-const Products = ({ menuData, id, filtered }) => {
-  if (id === null) {
+const Products = ({ products, name, filtered }) => {
+  if (name === null) {
     return (
       <>
         <Section>
           <Container>
-            {menuData.map((item, index) => (
-              <Product item={item} index={index} />
+            {products.map((item, index) => (
+              <Product item={item} key={index} />
             ))}
           </Container>
         </Section>
@@ -30,8 +31,8 @@ const Products = ({ menuData, id, filtered }) => {
       <>
         <Section>
           <Container>
-            {filtered.map((item, index) => (
-              <Product item={item} index={index} />
+            {filtered.map((item) => (
+              <Product item={item} />
             ))}
           </Container>
         </Section>
@@ -39,5 +40,13 @@ const Products = ({ menuData, id, filtered }) => {
     );
   }
 };
+
+// const mapStateToProps = (state) => {
+//   return {
+//     products: state.shop.products,
+//   };
+// };
+
+// export default connect(mapStateToProps)(Products);
 
 export default Products;

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import Cart from "../../Cart/Cart";
 import { HiPlusCircle } from "react-icons/hi";
 
 const Wrapper = styled.div`
@@ -43,20 +42,10 @@ const Plus = styled(HiPlusCircle)`
   }
 `;
 
-const Product = ({ item, index }) => {
-  const [modal, setModal] = useState(false);
-  const [addId, setAddId] = useState();
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setAddId(e.target.id);
-    console.log(addId);
-    setModal(true);
-  };
-
+const Product = ({ item }) => {
   return (
     <>
-      <Wrapper key={index}>
+      <Wrapper key={item.id}>
         <p>{item.name}</p>
         <Columns>
           <ColumnLeft>
@@ -64,12 +53,11 @@ const Product = ({ item, index }) => {
           </ColumnLeft>
           <ColumnRight>
             <p>{item.price}</p>
-            <Plus id={item.id} primary="true" onClick={handleChange} />
+            <Plus primary="true" />
             <p>Add</p>
           </ColumnRight>
         </Columns>
       </Wrapper>
-      {modal && <Cart />}
     </>
   );
 };
