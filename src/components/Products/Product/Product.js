@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+
 import { HiPlusCircle } from "react-icons/hi";
+
+// import Cart from "../../Cart/Cart";
 // import { useDispatch, useSelector } from "react-redux";
 
 const Wrapper = styled.div`

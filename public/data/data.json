@@ -250,5 +250,23 @@
     "image": "../images/burger1.png",
     "price" : "$ 8.99",
     "count": {"type": "Number", "default": 0}
+  },
+  {
+    "category": "Side/Drink",
+    "link": "",
+    "id" : "vvv28",
+    "name": "Grilled Double Mit Burger",
+    "image": "../images/drink1.png",
+    "price" : "$ 8.99",
+    "count": {"type": "Number", "default": 0}
+  },
+  {
+    "category": "Combo",
+    "link": "",
+    "id" : "vvv29",
+    "name": "Garden Burger Combo",
+    "image": "../images/combo2.png",
+    "price" : "$ 11.99",
+    "count": {"type": "Number", "default": 0}
   }
 ]

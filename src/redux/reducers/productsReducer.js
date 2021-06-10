@@ -2,7 +2,6 @@ import { ActionTypes } from "../constants/action-types";
 
 const initialState = {
   products: [],
-  product: [],
 };
 
 export const productsReducer = (state = initialState, { type, payload }) => {
@@ -15,12 +14,12 @@ export const productsReducer = (state = initialState, { type, payload }) => {
 };
 
 export const cartReducer = (state = {}, { type, payload }) => {
-  console.log(type);
   switch (type) {
     case ActionTypes.INCREMENT_PRODUCT:
-      return { ...state, ...payload };
+      const item = state.products.find((prod) => prod.id === payload.id);
+      return console.log(item);
     case ActionTypes.DECREMENT_PRODUCT:
-      return {};
+      return { ...state, ...payload };
     default:
       return state;
   }

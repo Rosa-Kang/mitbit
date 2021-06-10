@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../redux/actions/productActions";
 import styled from "styled-components";
+import axios from "axios";
+
+const url = "http://localhost:3000/data/data.json";
+
 // import { RiArrowUpSLine } from "react-icons/ri";
 // import { RiArrowDownSLine } from "react-icons/ri";
 
@@ -22,11 +28,30 @@ const CartItems = styled.div`
 `;
 
 const Cart = () => {
+  const product = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  const fetchProducts = async () => {
+    const response = await axios.get(url).catch((err) => {
+      console.log("Fetch", err);
+    });
+    dispatch(setProducts(response.data));
+    console.log(product);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <CartContainer>
-      <CartItems>
-        <h1>SHOPPING CART HERE!</h1>
-      </CartItems>
+      <h1> HELLO WORLD</h1>
+      {/* {product.map((item, index) => (
+        <CartItems key={index}>
+          <h1>{item.name}</h1>
+        </CartItems>
+      ))} */}
     </CartContainer>
   );
 };

@@ -40,12 +40,4 @@ const Products = ({ products, name, filtered }) => {
   }
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     products: state.shop.products,
-//   };
-// };
-
-// export default connect(mapStateToProps)(Products);
-
 export default Products;
