@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../redux/actions/productActions";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import Products from "../Products/Products";
+import axios from "axios";
+
+const url = "http://localhost:3000/data/data.json";
 
 const Greater = styled.div`
   display: flex;
@@ -83,7 +87,18 @@ const Navbar = () => {
   const [name, setName] = useState(null);
 
   const products = useSelector((state) => state.products.products);
-  console.log(products);
+  const dispatch = useDispatch();
+
+  const fetchProducts = async () => {
+    const response = await axios.get(url).catch((err) => {
+      console.log("Fetch", err);
+    });
+    dispatch(setProducts(response.data));
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const uniqueMenu = products.filter((item, i) => {
     return (
