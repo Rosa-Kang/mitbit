@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import styled from "styled-components";
-import { loadCurrentItem } from "../../redux/Shopping/shopping-actions";
+// import { useDispatch, useSelector } from "react-redux";
+// import { loadCurrentItem } from "../../redux/Shopping/shopping-actions";
 
 // import { RiArrowUpSLine } from "react-icons/ri";
 // import { RiArrowDownSLine } from "react-icons/ri";
@@ -12,8 +12,8 @@ const Wrapper = styled.section`
 `;
 
 const CartContainer = styled.section`
-  border-top-right-radius: 90px;
-  border-top-left-radius: 90px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
   border: 2px solid #dd3333;
   background-color: white;
   color: #dd3333;
@@ -23,7 +23,7 @@ const CartContainer = styled.section`
   align-items: center;
   width: 90%;
   position: fixed;
-  padding-top: 30px;
+  padding: 30px 0px;
   bottom: 0;
 `;
 
@@ -49,26 +49,35 @@ const CartItems = styled.div`
     padding: 10px 15px;
     border-radius: 50%;
   }
+
+  .cart,
+  .check-out {
+    padding: 15px 35px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #dd3333;
+    color: white;
+  }
 `;
 
-const Cart = () => {
-  const product = useSelector((state) => state.shop.cart);
-  const dispatch = useDispatch();
+const Cart = ({ cart }) => {
+  // const product = useSelector((state) => state.shop.cart);
+  // const dispatch = useDispatch();
 
-  const fetchCart = async () => {
-    await dispatch(loadCurrentItem(product));
-    console.log(product);
-  };
+  // const fetchCart = async () => {
+  //   await dispatch(loadCurrentItem(product));
+  //   console.log(product);
+  // };
 
-  useEffect(() => {
-    fetchCart();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product]);
-
+  // useEffect(() => {
+  //   fetchCart();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [product]);
+  console.log(cart);
   return (
     <Wrapper>
       <CartContainer>
-        {product.map((item) => (
+        {cart.map((item) => (
           <CartItems key={item.id}>
             <p>$ {item.price * item.qty}</p>
             <img src={item.image} alt={item.name} />
@@ -76,6 +85,13 @@ const Cart = () => {
             <p className="qty">{item.qty}</p>
           </CartItems>
         ))}
+        <CartItems>
+          {cart.map((curr) => (
+            <p className="cost">$ {curr.cost}</p>
+          ))}
+          <p className="cart">Go to Cart</p>
+          <p className="check-out">Check out</p>
+        </CartItems>
       </CartContainer>
     </Wrapper>
   );

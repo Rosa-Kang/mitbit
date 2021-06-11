@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import Products from "../Products/Products";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 // const url = "http://localhost:3000/data/data.json";
 
@@ -90,6 +90,8 @@ const Navbar = ({ products }) => {
     );
   });
 
+  console.log(uniqueMenu);
+
   const select = (e) => {
     e.preventDefault();
 
@@ -111,8 +113,8 @@ const Navbar = ({ products }) => {
           </Logo>
         </Head>
         <NavMenu>
-          {uniqueMenu.map((item) => (
-            <NavMenuLinks onClick={select} key={item.id} name={item.category}>
+          {uniqueMenu.map((item, index) => (
+            <NavMenuLinks key={index} onClick={select} name={item.category}>
               {item.category}
             </NavMenuLinks>
           ))}
@@ -123,11 +125,12 @@ const Navbar = ({ products }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.shop.products,
-    cart: state.shop.cart,
-  };
-};
+export default Navbar;
+// const mapStateToProps = (state) => {
+//   return {
+//     products: state.shop.products,
+//     cart: state.shop.cart,
+//   };
+// };
 
-export default connect(mapStateToProps)(Navbar);
+// export default connect(mapStateToProps)(Navbar);

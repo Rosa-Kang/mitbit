@@ -18,8 +18,8 @@ const Products = ({ products, name, filtered }) => {
       <>
         <Section>
           <Container>
-            {products.map((item, index) => (
-              <Product item={item} key={index} />
+            {products.map((item) => (
+              <Product item={item} key={item.id} />
             ))}
           </Container>
         </Section>
