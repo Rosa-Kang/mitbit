@@ -1,58 +1,69 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "../../redux/actions/productActions";
 import styled from "styled-components";
-import axios from "axios";
-
-const url = "http://localhost:3000/data/data.json";
+import { loadCurrentItem } from "../../redux/Shopping/shopping-actions";
 
 // import { RiArrowUpSLine } from "react-icons/ri";
 // import { RiArrowDownSLine } from "react-icons/ri";
-
-const CartContainer = styled.section`
+const Wrapper = styled.section`
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-items: center;
+`;
+
+const CartContainer = styled.section`
+  border-radius: 100px;
+  color: #dd3333;
+  background-color: #ffffdb;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  position: fixed;
+  padding-top: 30px;
+  bottom: 0;
 `;
 
 const CartItems = styled.div`
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-  border: 1px solid #dd3333;
-  padding-top: 30px;
-  position: fixed;
-  bottom: 0;
-  width: 80%;
-  background-color: #f4fcbf;
-  height: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 const Cart = () => {
-  const product = useSelector((state) => state.products);
+  const product = useSelector((state) => state.shop.cart);
   const dispatch = useDispatch();
 
-  const fetchProducts = async () => {
-    const response = await axios.get(url).catch((err) => {
-      console.log("Fetch", err);
-    });
-    dispatch(setProducts(response.data));
+  const fetchCart = async () => {
+    await dispatch(loadCurrentItem(product));
     console.log(product);
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchCart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [product]);
 
   return (
-    <CartContainer>
-      <h1> HELLO WORLD</h1>
-      {/* {product.map((item, index) => (
-        <CartItems key={index}>
-          <h1>{item.name}</h1>
-        </CartItems>
-      ))} */}
-    </CartContainer>
+    <Wrapper>
+      <CartContainer>
+        {product.map((item) => (
+          <CartItems key={item.id}>
+            <h1>{item.name}</h1>
+            <img src={item.image} alt={item.name} />
+            <p>{item.qty}</p>
+          </CartItems>
+        ))}
+      </CartContainer>
+    </Wrapper>
   );
 };
 

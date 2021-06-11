@@ -1,10 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-
+import { addToCart } from "../../../redux/Shopping/shopping-actions";
 import { HiPlusCircle } from "react-icons/hi";
 
-// import Cart from "../../Cart/Cart";
-// import { useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,11 +47,10 @@ const Plus = styled(HiPlusCircle)`
 `;
 
 const Product = ({ item }) => {
-  // const [alias, setAlias] = useState();
-  // const dispatch = useDispatch();
-  const clickHandler = (e) => {
-    const info = e.currentTarget.getAttribute("alias");
-    console.log(info);
+  const dispatch = useDispatch();
+  const id = item.id;
+  const handleClick = () => {
+    dispatch(addToCart(id));
   };
 
   return (
@@ -64,7 +63,7 @@ const Product = ({ item }) => {
           </ColumnLeft>
           <ColumnRight>
             <p>{item.price}</p>
-            <Plus primary="true" alias={item.id} onClick={clickHandler} />
+            <Plus primary="true" alias={item.id} onClick={handleClick} />
             <p>Add</p>
           </ColumnRight>
         </Columns>
@@ -73,4 +72,10 @@ const Product = ({ item }) => {
   );
 };
 
-export default Product;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (id) => dispatch(addToCart(id)),
+  };
+};
+
+export default connect(mapDispatchToProps)(Product);

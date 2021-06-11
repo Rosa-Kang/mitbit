@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "../../redux/actions/productActions";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import Products from "../Products/Products";
-import axios from "axios";
+import { connect } from "react-redux";
 
-const url = "http://localhost:3000/data/data.json";
+// const url = "http://localhost:3000/data/data.json";
 
 const Greater = styled.div`
   display: flex;
@@ -47,8 +45,6 @@ const NavMenu = styled.ul`
     width: 80%;
     overflow: auto;
     white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
 
     &::-webkit-scrollbar {
       display: none;
@@ -83,23 +79,8 @@ const NavMenuLinks = styled.li`
   }
 `;
 
-const Navbar = () => {
+const Navbar = ({ products }) => {
   const [name, setName] = useState(null);
-
-  const products = useSelector((state) => state.products.products);
-  const dispatch = useDispatch();
-
-  const fetchProducts = async () => {
-    const response = await axios.get(url).catch((err) => {
-      console.log("Fetch", err);
-    });
-    dispatch(setProducts(response.data));
-  };
-
-  useEffect(() => {
-    fetchProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const uniqueMenu = products.filter((item, i) => {
     return (
@@ -113,7 +94,6 @@ const Navbar = () => {
     e.preventDefault();
 
     setName(e.target.getAttribute("name"));
-    console.log(name);
   };
 
   const reset = () => {
@@ -132,11 +112,7 @@ const Navbar = () => {
         </Head>
         <NavMenu>
           {uniqueMenu.map((item) => (
-            <NavMenuLinks
-              onClick={select}
-              key={item.category}
-              name={item.category}
-            >
+            <NavMenuLinks onClick={select} key={item.id} name={item.category}>
               {item.category}
             </NavMenuLinks>
           ))}
@@ -147,4 +123,11 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    products: state.shop.products,
+    cart: state.shop.cart,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);
