@@ -12,9 +12,11 @@ const Wrapper = styled.section`
 `;
 
 const CartContainer = styled.section`
-  border-radius: 100px;
+  border-top-right-radius: 90px;
+  border-top-left-radius: 90px;
+  border: 2px solid #dd3333;
+  background-color: white;
   color: #dd3333;
-  background-color: #ffffdb;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -26,15 +28,26 @@ const CartContainer = styled.section`
 `;
 
 const CartItems = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0px 10px;
+  padding: 0px 20px;
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .qty {
+    background-color: #dd3333;
+    position: absolute;
+    top: 17%;
+    right: 23%;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
   }
 `;
 
@@ -57,9 +70,10 @@ const Cart = () => {
       <CartContainer>
         {product.map((item) => (
           <CartItems key={item.id}>
-            <h1>{item.name}</h1>
+            <p>$ {item.price * item.qty}</p>
             <img src={item.image} alt={item.name} />
-            <p>{item.qty}</p>
+            <h1>{item.name}</h1>
+            <p className="qty">{item.qty}</p>
           </CartItems>
         ))}
       </CartContainer>

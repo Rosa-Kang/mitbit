@@ -62,7 +62,7 @@ const Product = ({ item }) => {
             <img src={item.image} alt={item.name} />
           </ColumnLeft>
           <ColumnRight>
-            <p>{item.price}</p>
+            <p>$ {item.price}</p>
             <Plus primary="true" alias={item.id} onClick={handleClick} />
             <p>Add</p>
           </ColumnRight>
