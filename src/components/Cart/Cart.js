@@ -59,7 +59,7 @@ const CartItems = styled.div`
     color: white;
   }
 
-  .amount {
+  .total {
     padding-top: 5px;
     margin-top: 7px;
     border-top: solid 1px;
@@ -80,9 +80,10 @@ const Cart = ({ cart }) => {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [product]);
   console.log(cart);
-  let amount = cart.reduce(
-    (prev, curr) => prev.price * prev.qty + curr.price * curr.qty
-  );
+  let amount = cart.reduce((prev, curr) => prev.price + curr.price);
+
+  console.log(amount);
+
   return (
     <Wrapper>
       <CartContainer>
@@ -98,7 +99,7 @@ const Cart = ({ cart }) => {
           {cart.map((curr) => (
             <p className="cost"> $ {curr.cost}</p>
           ))}
-          <p className="amount"> Total : $ {amount}</p>
+          {cart.length && <p>{cart.length}</p>}
           <p className="cart">Go to Cart</p>
           <p className="check-out">Check out</p>
         </CartItems>

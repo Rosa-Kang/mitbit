@@ -90,8 +90,6 @@ const Navbar = ({ products }) => {
     );
   });
 
-  console.log(uniqueMenu);
-
   const select = (e) => {
     e.preventDefault();
 
