@@ -20,13 +20,18 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `Shopping Cart` - TIL on 07/06/2021 !
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Able to build the `Shopping Cart` using react & redux.\
+To calculate and display the total amount to pay, we can use 'reduce' in JavaScript.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The code is as follow.\
+
+```javascript
+let amount = cart.reduce(
+(prev, curr) => prev.price _ prev.qty + curr.price _ curr.qty
+);
+```
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
