@@ -25,7 +25,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Able to build the `Shopping Cart` using react & redux.\
 To calculate and display the total amount to pay, we can use 'reduce' in JavaScript.
 
-The code is as follow.\
+The code is as follow.
 
 ```javascript
 let amount = cart.reduce(
